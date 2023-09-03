@@ -1,25 +1,65 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const users = {
+    'douglas@testpuc.com.br': 'password1',
+    'user2': 'password2',
+  };
+
+  const handleLogin = () => {
+    if (users.hasOwnProperty(username) && users[username] === password) {
+      setLoggedIn(true);
+    } else if (username === '' || password === '') {
+      alert('Preencha ambos os campos.');
+    } else {
+      alert('Credenciais inválidas. Tente novamente.');
+    }
+  };
+  
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setUsername('');
+    setPassword('');
+  };
+
+  if (loggedIn) {
+    return (
+      <div className="App">
+        <h1>Bem-vindo, {username}!</h1>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        <h1>Login</h1>
+        <div>
+        <input
+            type="text"
+            placeholder="Usuário"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+               
+        <button onClick={handleLogin}>Acessar</button>
+      </div>
+    );
+  }
 }
 
 export default App;
