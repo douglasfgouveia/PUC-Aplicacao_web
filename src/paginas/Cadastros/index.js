@@ -17,7 +17,7 @@ class Cadastro extends Component{
         }
         this.gravar = this.gravar.bind(this);
     }
-    async gravar(){
+    async gravar(){      
         
         await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.senha)
         .then(async(retorno) =>{

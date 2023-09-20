@@ -6,10 +6,10 @@ import '../../App.css';
 class Login extends Component {
     constructor(props) {
         super(props);
-            this.state = {
-                email: "",
-                senha: "",
-                erroMensagem: "",
+        this.state = {
+            email: "",
+            senha: "",
+            erroMensagem: "",
             }
 
         this.acessar = this.acessar.bind(this);
@@ -30,16 +30,19 @@ class Login extends Component {
 
     render(){
         return(
-            <div>
-                <h1>Login</h1>
-                <input type="email" placeholder='E-mail' onChange={(e)=> this.setState({email: e.target.value})}/>
-                <br/>
-                <input type="password" placeholder='Senha' onChange={(e)=> this.setState({senha: e.target.value})}/>
-                <br/>
-                <button onClick={this.acessar}>Acessar</button>
-                <Link to="/cadastro"><button>Cadastrar</button></Link>
-                {this.state.erroMensagem && <p>{this.state.erroMensagem}</p>}
+            <div className="login-container">
+            <div className="login-box">
+              <h1>Login</h1>
+              <input type="email" placeholder='E-mail' onChange={(e) => this.setState({ email: e.target.value })} />
+              <br />
+              <input type="password" placeholder='Senha' onChange={(e) => this.setState({ senha: e.target.value })} />
+              <br />
+              <button onClick={this.acessar}>Acessar</button>
+                <div className="linha-continua"><span>OU</span></div>
+                <Link to="/cadastro"><button>Cadastre-se aqui</button></Link>
+              {this.state.erroMensagem && <p className="erro-mensagem">{this.state.erroMensagem}</p>}
             </div>
+          </div>
         )
     }
 }
