@@ -6,6 +6,6 @@ script:
   - docker pull douglasfernando/devops_atp2
   - docker run -v $PWD/:/app/report/ douglasfernando/devops_atp2
 
-# after_script:
-#   - bash ./telegram_notification.sh
+after_script:
+  - bash ./telegram_notification.sh
   
