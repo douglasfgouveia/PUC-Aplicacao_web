@@ -14,9 +14,21 @@
 //   })
 // })
 
+// describe('The Login Page', () => {
+//   it('successfully loads', () => {
+//     cy.visit('/')
+//     cy.get('h1').should('contain', 'Login')
+//   })
+// })
+
 describe('The Login Page', () => {
-  it('successfully loads', () => {
-    cy.visit('/')
-    cy.get('h1').should('contain', 'Login')
+    it('successfully loads', () => {
+      cy.visit('https://pucpr-tecdevweb-atp2.netlify.app')
+      cy.get('h1').should('contain', 'Login')
+
+      cy.get('[type="email"]').type('fake@email.com')
+      //     cy.get('[type="password"]').type('fakepassword')
+      //   })
+      // })
+    })
   })
-})
